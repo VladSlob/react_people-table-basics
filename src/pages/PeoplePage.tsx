@@ -6,8 +6,24 @@ import { Loader } from '../components/Loader';
 
 export default function PeoplePage() {
   const [people, setPeople] = useState<Person[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
+  useEffect(() => {
     setIsLoading(true);
+    getPeople()
+      .then(data => setPeople(data))
+      .catch(() => setHasError(true))
+      .finally(() => setIsLoading(false));
+  }, []);
+
+  return (
+    <>
+      <h1 className="title">People Page</h1>
+
+      <div className="block">
+        <div className="box table-container">
+          {isLoading && <Loader />}
 
           {!isLoading && hasError && (
             <p data-cy="peopleLoadingError" className="has-text-danger">
