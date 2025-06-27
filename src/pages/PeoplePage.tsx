@@ -11,19 +11,6 @@ export default function PeoplePage() {
 
   useEffect(() => {
     setIsLoading(true);
-    getPeople()
-      .then(data => setPeople(data))
-      .catch(() => setHasError(true))
-      .finally(() => setIsLoading(false));
-  }, []);
-
-  return (
-    <>
-      <h1 className="title">People Page</h1>
-
-      <div className="block">
-        <div className="box table-container">
-          {isLoading && <Loader />}
 
           {!isLoading && hasError && (
             <p data-cy="peopleLoadingError" className="has-text-danger">
