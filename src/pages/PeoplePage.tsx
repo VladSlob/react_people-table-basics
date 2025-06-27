@@ -6,10 +6,7 @@ import { Loader } from '../components/Loader';
 
 export default function PeoplePage() {
   const [people, setPeople] = useState<Person[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [hasError, setHasError] = useState(false);
 
-  useEffect(() => {
     setIsLoading(true);
 
           {!isLoading && hasError && (
